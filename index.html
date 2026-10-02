@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Little Crab Heart | Seafood Restaurant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-khaki: #463F1A;
+            --brown-bark: #60492C;
+            --linen: #F9EBE0;
+            --bondi-blue: #208AAE;
+            --prussian: #0D2149;
+            --white: #FFFFFF;
+            --soft-shadow: 0 10px 40px rgba(13, 33, 73, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--linen);
+            color: var(--prussian);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.25rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.4s ease;
+            background: transparent;
+        }
+
+        nav.scrolled {
+            background: rgba(249, 235, 224, 0.92);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 30px rgba(13, 33, 73, 0.06);
+            padding: 0.9rem 5%;
+        }
+
+        .logo-nav {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--prussian);
+        }
+
+        .logo-nav img {
+            height: 42px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-nav:hover img {
+            transform: scale(1.05);
+        }
+
+        .logo-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.35rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--prussian);
+            font-weight: 400;
+            font-size: 0.95rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background: var(--bondi-blue);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--bondi-blue);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 26px;
+            height: 2px;
+            background: var(--prussian);
+            transition: all 0.3s ease;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(135deg, var(--prussian) 0%, #0a1a3a 100%);
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('Gemini_Generated_Image_ofzwh1ofzwh1ofzw.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.35;
+            filter: saturate(0.9);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, transparent 0%, rgba(13, 33, 73, 0.7) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: var(--linen);
+            padding: 2rem;
+            max-width: 800px;
+        }
+
+        .hero-logo {
+            width: 140px;
+            height: auto;
+            margin-bottom: 1.5rem;
+            filter: brightness(0) invert(1);
+            opacity: 0.95;
+            animation: fadeUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.8rem, 7vw, 4.5rem);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.03em;
+            animation: fadeUp 1s ease-out 0.15s both;
+        }
+
+        .hero .tagline {
+            font-size: 1.15rem;
+            font-weight: 300;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            opacity: 0.85;
+            margin-bottom: 2.5rem;
+            animation: fadeUp 1s ease-out 0.3s both;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            gap: 1.25rem;
+            animation: fadeUp 1s ease-out 0.45s both;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.95rem 2.2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 2px;
+            transition: all 0.35s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--bondi-blue);
+            color: var(--white);
+            border: 2px solid var(--bondi-blue);
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--linen);
+            border-color: var(--linen);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--linen);
+            border: 2px solid rgba(249, 235, 224, 0.5);
+        }
+
+        .btn-outline:hover {
+            background: var(--linen);
+            color: var(--prussian);
+            border-color: var(--linen);
+        }
+
+        /* Sections common */
+        section {
+            padding: 6rem 5%;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header .eyebrow {
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--bondi-blue);
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            color: var(--prussian);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            max-width: 560px;
+            margin: 0 auto;
+            color: var(--brown-bark);
+            font-weight: 300;
+            font-size: 1.05rem;
+        }
+
+        /* About / Mission Vision Objective */
+        .about {
+            background: var(--white);
+        }
+
+        .mvo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .mvo-card {
+            background: var(--linen);
+            padding: 2.75rem 2.25rem;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .mvo-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--bondi-blue);
+            transform: scaleY(0);
+            transform-origin: bottom;
+            transition: transform 0.4s ease;
+        }
+
+        .mvo-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--soft-shadow);
+        }
+
+        .mvo-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .mvo-card .number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: rgba(32, 138, 174, 0.15);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .mvo-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: var(--prussian);
+        }
+
+        .mvo-card p {
+            color: var(--brown-bark);
+            font-weight: 300;
+            font-size: 0.98rem;
+            line-height: 1.7;
+        }
+
+        /* Featured Dish */
+        .featured {
+            background: var(--prussian);
+            color: var(--linen);
+            padding: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 520px;
+        }
+
+        .featured-img {
+            background-image: url('Gemini_Generated_Image_sdzszasdzszasdzs.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 400px;
+        }
+
+        .featured-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 4rem 3.5rem;
+        }
+
+        .featured-content .eyebrow {
+            color: var(--bondi-blue);
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .featured-content h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            margin-bottom: 1.25rem;
+            color: var(--linen);
+        }
+
+        .featured-content p {
+            font-weight: 300;
+            opacity: 0.85;
+            margin-bottom: 2rem;
+            max-width: 420px;
+            line-height: 1.75;
+        }
+
+        /* Menu */
+        .menu {
+            background: var(--linen);
+        }
+
+        .menu-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 3.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: 1.5px solid rgba(13, 33, 73, 0.2);
+            color: var(--prussian);
+            padding: 0.7rem 1.8rem;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn:hover,
+        .tab-btn.active {
+            background: var(--prussian);
+            color: var(--linen);
+            border-color: var(--prussian);
+        }
+
+        .menu-panel {
+            display: none;
+            max-width: 900px;
+            margin: 0 auto;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .menu-panel.active {
+            display: block;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(96, 73, 44, 0.15);
+            gap: 1.5rem;
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .menu-item-info h4 {
+            font-size: 1.35rem;
+            margin-bottom: 0.35rem;
+            color: var(--prussian);
+        }
+
+        .menu-item-info p {
+            font-size: 0.9rem;
+            color: var(--brown-bark);
+            font-weight: 300;
+            max-width: 480px;
+        }
+
+        .menu-item .price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--bondi-blue);
+            white-space: nowrap;
+        }
+
+        /* Experience / Chef */
+        .experience {
+            background: var(--white);
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 0;
+            padding: 0;
+            min-height: 560px;
+        }
+
+        .experience-content {
+            padding: 5rem 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .experience-content .eyebrow {
+            color: var(--bondi-blue);
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .experience-content h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .experience-content p {
+            color: var(--brown-bark);
+            font-weight: 300;
+            margin-bottom: 1.25rem;
+            line-height: 1.75;
+            max-width: 460px;
+        }
+
+        .experience-img {
+            background-image: url('Gemini_Generated_Image_xzgh9mxzgh9mxzgh.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 400px;
+        }
+
+        /* Reservation / CTA */
+        .cta {
+            background: linear-gradient(135deg, var(--prussian), #152a55);
+            color: var(--linen);
+            text-align: center;
+            padding: 6rem 5%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(32, 138, 174, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .cta h2 {
+            font-size: clamp(2.2rem, 5vw, 3rem);
+            margin-bottom: 1rem;
+            color: var(--linen);
+        }
+
+        .cta p {
+            font-weight: 300;
+            opacity: 0.85;
+            margin-bottom: 2.5rem;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--prussian);
+            color: var(--linen);
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 3rem;
+            max-width: 1100px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-brand img {
+            height: 50px;
+            filter: brightness(0) invert(1);
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .footer-brand p {
+            font-weight: 300;
+            font-size: 0.9rem;
+            opacity: 0.7;
+            max-width: 260px;
+            line-height: 1.7;
+        }
+
+        .footer-col h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1.25rem;
+            letter-spacing: 0.05em;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-col a {
+            color: rgba(249, 235, 224, 0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 300;
+            transition: color 0.3s ease;
+        }
+
+        .footer-col a:hover {
+            color: var(--bondi-blue);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(249, 235, 224, 0.1);
+            padding-top: 1.5rem;
+            text-align: center;
+            font-size: 0.85rem;
+            opacity: 0.5;
+            font-weight: 300;
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .featured,
+            .experience {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-img,
+            .experience-img {
+                min-height: 320px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(249, 235, 224, 0.98);
+                flex-direction: column;
+                padding: 1.5rem 5%;
+                gap: 1.25rem;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .experience-content,
+            .featured-content {
+                padding: 3rem 1.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="#hero" class="logo-nav">
+            <img src="03-logo-icon-square-transparent.png" alt="Little Crab Heart Logo">
+            <span class="logo-text">Little Crab Heart</span>
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#about">About</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#reserve">Reserve</a></li>
+        </ul>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <img src="03-logo-icon-square-transparent.png" alt="Little Crab Heart" class="hero-logo">
+            <h1>Little Crab Heart</h1>
+            <p class="tagline">Seafood Restaurant</p>
+            <div class="hero-cta">
+                <a href="#menu" class="btn btn-primary">Explore Menu</a>
+                <a href="#reserve" class="btn btn-outline">Book a Table</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Vision Objective -->
+    <section class="about" id="about">
+        <div class="section-header reveal">
+            <p class="eyebrow">Our Essence</p>
+            <h2>Mission, Vision & Purpose</h2>
+            <p>Rooted in the ocean’s bounty, guided by heart and craft.</p>
+        </div>
+        <div class="mvo-grid">
+            <div class="mvo-card reveal">
+                <div class="number">01</div>
+                <h3>Mission</h3>
+                <p>To serve the freshest seafood with soulful care, creating memorable dining experiences that celebrate the ocean’s gifts and bring people together around the table.</p>
+            </div>
+            <div class="mvo-card reveal">
+                <div class="number">02</div>
+                <h3>Vision</h3>
+                <p>To become the most beloved coastal sanctuary where every dish tells a story of sustainability, passion, and the quiet poetry of the sea.</p>
+            </div>
+            <div class="mvo-card reveal">
+                <div class="number">03</div>
+                <h3>Objective</h3>
+                <p>To continuously elevate coastal cuisine through seasonal menus, responsible sourcing, and warm hospitality that makes every guest feel like family.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured -->
+    <section class="featured">
+        <div class="featured-img"></div>
+        <div class="featured-content reveal">
+            <p class="eyebrow">Signature Dish</p>
+            <h2>Coastal Shrimp Ceviche</h2>
+            <p>Succulent shrimp marinated in citrus, tossed with fresh avocado, cucumber, and a bright tomato salsa. A refreshing ode to the Pacific, finished with fragrant cilantro and a squeeze of lime.</p>
+            <a href="#menu" class="btn btn-primary">View Full Menu</a>
+        </div>
+    </section>
+
+    <!-- Menu -->
+    <section class="menu" id="menu">
+        <div class="section-header reveal">
+            <p class="eyebrow">From the Sea</p>
+            <h2>Our Menu</h2>
+            <p>Thoughtfully curated plates that honor the ocean’s finest offerings.</p>
+        </div>
+
+        <div class="menu-tabs reveal">
+            <button class="tab-btn active" data-tab="mains">Main Dishes</button>
+            <button class="tab-btn" data-tab="desserts">Desserts</button>
+            <button class="tab-btn" data-tab="starters">Starters</button>
+            <button class="tab-btn" data-tab="drinks">Drinks</button>
+        </div>
+
+        <!-- Main Dishes -->
+        <div class="menu-panel active" id="mains">
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h4>Crab Heart Paella</h4>
+                    <p>Saffron rice with whole soft-shell crab, mussels, clams, shrimp, and seasonal vegetables. Our namesake dish.</p>
+                </div>
+                <span class="price">$38</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h4>Grilled Lobster Tail</h4>
+                    <p>Butter-poached lobster tail finished on the grill, served with garlic herb butter and charred lemon.</p>
+                </div>
+                <span class="price">$46</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h4>Seared Scallops</h4>
+                    <p>Pan-seared diver scallops over cauliflower purée, brown butter, and crispy prosciutto.</p>
+                </div>
+                <span class="price">$34</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h4>Black Cod Miso</h4>
+                    <p>Miso-marinated black cod, slow roasted and served with bok choy and ginger-scallion sauce.</p>
+                </div>
+                <span class="price">$36</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h4>Seafood Linguine</h4>
+                    <p>Fresh pasta tossed with clams, shrimp, and squid in a light white wine and cherry tomato sauce.</p>
+                </div>
+                <span class="price">$29</span>
+            </div>
+        </div>
+
+        <!-- Desserts -->
+        <div class="menu-panel" id="desserts">
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h4>Coconut Panna Cotta</h4>
+                    <p>Silky coconut panna cotta topped with passion fruit coulis and toasted coconut flakes.</p>
+                </div>
+                <span class="price">$12</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h4>Key Lime Tart</h4>
+                    <p>Classic key lime filling in a buttery shortbread crust, finished with torched meringue.</p>
+                </div>
+                <span class="price">$11</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h4>Dark Chocolate Mousse</h4>
+                    <p>Rich dark chocolate mousse with sea salt, olive oil, and a hint of smoked chili.</p>
+                </div>
+                <span class="price">$13</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h4>Seasonal Fruit Soup</h4>
+                    <p>Chilled berry and citrus soup with basil oil and a scoop of vanilla bean gelato.</p>
+                </div>
+                <span class="price">$10</span>
+            </div>
+        </div>
+
+        <!-- Starters -->
+        <div class="menu-panel" id="starters">
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h4>Coastal Shrimp Ceviche</h4>
+                    <p>Citrus-marinated shrimp, avocado, cucumber, tomato salsa, and fresh cilantro.</p>
+                </div>
+                <span class="price">$18</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h4>Oysters on the Half Shell</h4>
+                    <p>Half-dozen local oysters with mignonette, lemon, and house hot sauce.</p>
+                </div>
+                <span class="price">$22</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h4>Crab Cakes</h4>
+                    <p>Two jumbo lump crab cakes with remoulade and micro greens.</p>
+                </div>
+                <span class="price">$19</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h4>Tuna Tartare</h4>
+                    <p>Diced yellowfin tuna, avocado, sesame, and crispy wonton chips.</p>
+                </div>
+                <span class="price">$17</span>
+            </div>
+        </div>
+
+        <!-- Drinks -->
+        <div class="menu-panel" id="drinks">
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h4>Crab Heart Spritz</h4>
+                    <p>Aperol, sparkling wine, blood orange, and a sprig of rosemary.</p>
+                </div>
+                <span class="price">$14</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h4>Ocean Breeze</h4>
+                    <p>Gin, cucumber, elderflower, lime, and a touch of sea salt.</p>
+                </div>
+                <span class="price">$15</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h4>House White Sangria</h4>
+                    <p>White wine, seasonal fruit, citrus, and a splash of sparkling water.</p>
+                </div>
+                <span class="price">$12</span>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-info">
+                    <h4>Fresh Coconut Water</h4>
+                    <p>Chilled young coconut water served in the shell.</p>
+                </div>
+                <span class="price">$8</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section class="experience" id="experience">
+        <div class="experience-content reveal">
+            <p class="eyebrow">Craft & Passion</p>
+            <h2>From Our Kitchen to Your Table</h2>
+            <p>Every plate begins with the morning’s catch and ends with careful hands that respect tradition while embracing creativity.</p>
+            <p>Our chefs work closely with local fishermen and sustainable suppliers so that what reaches your table is as fresh as the tide that brought it in.</p>
+            <a href="#reserve" class="btn btn-primary" style="align-self: flex-start; margin-top: 0.5rem;">Reserve Your Evening</a>
+        </div>
+        <div class="experience-img"></div>
+    </section>
+
+    <!-- CTA / Reserve -->
+    <section class="cta" id="reserve">
+        <div class="reveal">
+            <h2>An Evening by the Sea Awaits</h2>
+            <p>Join us for an intimate seafood experience. Whether it’s a quiet dinner or a celebration, we look forward to welcoming you.</p>
+            <a href="mailto:reservations@littlecrabheart.com" class="btn btn-primary">Make a Reservation</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <img src="02-logo-text-only-transparent.png" alt="Little Crab Heart">
+                <p>A seafood sanctuary where the ocean’s heart meets the table. Fresh, thoughtful, and made with love.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#reserve">Reservations</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Visit</h4>
+                <ul>
+                    <li><a href="#">42 Harbor Lane</a></li>
+                    <li><a href="#">Coastal Bay</a></li>
+                    <li><a href="#">Open daily 12pm – 10pm</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="mailto:hello@littlecrabheart.com">main.chef@littlecrabheart.com</a></li>
+                    <li><a href="tel:+522713452255">+52 2713452255</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Facebook</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Little Crab Heart. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 60) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+        });
+
+        // Close mobile menu on link click
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+            });
+        });
+
+        // Menu tabs
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const panels = document.querySelectorAll('.menu-panel');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tabBtns.forEach(b => b.classList.remove('active'));
+                panels.forEach(p => p.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById(btn.dataset.tab).classList.add('active');
+            });
+        });
+
+        // Scroll reveal
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        reveals.forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
